@@ -3,7 +3,7 @@ from django.conf import settings
 
 class Product(models.Model):
     STATUS_CHOICES = [
-        ('draft', 'Draft')
+        ('draft', 'Draft'),
         ('live', 'Live'),
         ('sold', 'Sold'),
         ('delivered', 'Delivered'),
