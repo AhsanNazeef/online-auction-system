@@ -11,4 +11,7 @@ class Bid(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Bid of {self.bid_amount} by {self.bidder.username} on {self.auction.product.product_name}"
+        return f"Bid of {self.bid_amount} by {self.bidder.username} on {self.auction.product.name}"
+
+    class Meta:
+        unique_together = [['auction', 'bidder']]

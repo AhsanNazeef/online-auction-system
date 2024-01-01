@@ -17,4 +17,4 @@ class Auction(models.Model):
         max_length=20, choices=STATUS_CHOICES, default='pending')
     
     def __str__(self):
-        return f"Auction for {self.product.product_name}"
+        return f"Auction for {self.product.name}"

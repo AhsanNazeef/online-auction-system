@@ -1,11 +1,11 @@
-from . import views
+from .views import AuctionViewSet
+from bid.views import BidViewSet
 from rest_framework_nested import routers
 
 router = routers.DefaultRouter()
-router.register('', views.AuctionViewSet, basename='auction')
+router.register('', AuctionViewSet, basename='auction')
 
-# products_router = routers.NestedDefaultRouter(router, '', lookup='product')
-# products_router.register('images', views.ProductImagesViewSet, basename='product-images')
-# URLConf
-urlpatterns = router.urls 
-# + products_router.urls
+auction_router = routers.NestedDefaultRouter(router, '', lookup='auction')
+auction_router.register('bids', BidViewSet, basename='auction-bids')
+
+urlpatterns = router.urls + auction_router.urls
