@@ -59,7 +59,6 @@ INSTALLED_APPS = [
     'authentication',
     'auction',
     'bid',
-    'review',
     'product',
 ]
 
