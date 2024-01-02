@@ -59,7 +59,6 @@ INSTALLED_APPS = [
     'authentication',
     'auction',
     'bid',
-    'review',
     'product',
 ]
 
@@ -159,3 +158,12 @@ DJOSER = {
         'current_user': 'authentication.serializers.UserSerializer',
     }
 }
+
+# Celery configuration
+CELERY_BROKER_URL = 'redis://localhost:6379/0'  
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'  
+
+# Django-Celery settings
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
