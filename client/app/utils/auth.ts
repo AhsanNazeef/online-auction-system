@@ -1,3 +1,4 @@
+'use client'
 import { BaseURL } from "./constants";
 
 export const getUserFromToken = async (token: string) => {
