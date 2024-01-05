@@ -5,7 +5,7 @@ import logo from "../../public/logo.svg";
 
 const Footer = () => {
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50 bottom-0 relative w-full">
       <div className="mx-auto mt-12 max-w-7xl flex justify-center">
         <footer className="px-4 py-10 inline-flex items-center">
           <span className="mr-5">
