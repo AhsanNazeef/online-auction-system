@@ -16,7 +16,7 @@ const RegisterForm = () => {
   const [error, setError] = React.useState("");
   const [submitting, setSubmitting] = React.useState(false);
   const router = useRouter();
-  const { user, setUser } = store();
+  const { user } = store();
 
   useEffect(() => {
     if (user) {
@@ -44,10 +44,7 @@ const RegisterForm = () => {
     });
     const data = await res.json();
     if (res.ok) {
-      setCookie("access-token", data.access, 7);
-      setCookie("refresh-token", data.refresh, 7);
-      setUser(user);
-      router.push("/auctions");
+      router.push("/login");
     } else {
       if (data.username) setError(data.username[0]);
       else if (data.email) setError(data.email[0]);
