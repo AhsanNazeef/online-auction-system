@@ -2,12 +2,16 @@ import { create } from "zustand";
 import { getCookie } from "./app/utils/auth";
 
 const initialState = {
-    accessToken: getCookie('access-token') ,
-    refreshToken: getCookie('refresh-token'),
+    accessToken: "",
+    refreshToken: "",
     user: null,
     products: [],
     auctions: [],
 };
+
+if (typeof document !== 'undefined') {
+    initialState.accessToken = getCookie("access-token") ?? "";
+}
 
 interface Store {
     accessToken: string | null;
