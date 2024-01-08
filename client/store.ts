@@ -23,6 +23,7 @@ interface Store {
     setProducts: (products: Object[] | null) => void;
     setAuctions: (auctions: Object[] | null) => void;
     resetStore: () => void;
+    setAccessToken: (accessToken: string) => void;
 }
 
 export const store = create<Store>((set) => ({
