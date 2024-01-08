@@ -1,13 +1,12 @@
 from rest_framework import serializers
 from django.utils import timezone
 
+from authentication.serializers import UserSerializer
 from auction.models import Auction
 from .models import Bid
-    
-
 
 class BidSerializer(serializers.ModelSerializer):
-    
+    bidder = UserSerializer(read_only=True)
     class Meta:
         model = Bid
         fields = ('id', 'bidder', 'bid_amount', 'timestamp', 'auction')
@@ -25,12 +24,10 @@ class BidSerializer(serializers.ModelSerializer):
         
         if auction.status != 'live':
             raise serializers.ValidationError("Auction is not open for bidding")
-        if auction.start_date > now:
+        if auction.start_time > now:
             raise serializers.ValidationError("Auction has not started yet")
-        if auction.end_date < now:
+        if auction.end_time < now:
             raise serializers.ValidationError("Auction has already ended")
-        if bid_with_user.exists():
-            raise serializers.ValidationError("You have already bid for this auction")
         if bid_amount < auction.minimum_bid:
             raise serializers.ValidationError("Bid amount cannot be less than minimum bid amount")
         

@@ -12,6 +12,3 @@ class Bid(models.Model):
 
     def __str__(self):
         return f"Bid of {self.bid_amount} by {self.bidder.username} on {self.auction.product.name}"
-
-    class Meta:
-        unique_together = [['auction', 'bidder']]

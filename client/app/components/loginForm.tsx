@@ -14,7 +14,7 @@ const LoginForm = () => {
   const [error, setError] = React.useState("");
   const [submitting, setSubmitting] = React.useState(false);
   const router = useRouter();
-  const { user, setUser, accessToken } = store();
+  const { user, setUser, accessToken, setAccessToken } = store();
 
   useEffect(() => {
     if (user) {
@@ -50,6 +50,7 @@ const LoginForm = () => {
       setCookie("access-token", data.access, 7);
       setCookie("refresh-token", data.refresh, 7);
       const user = await getUserFromToken(data.access);
+      setAccessToken(data.access);
       setUser(user);
     } else {
       setError(data.detail);
