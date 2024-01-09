@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { ArrowRight, Plus } from "lucide-react";
 import { store } from "@/store";
-import { createProduct, createProductImage, getProduct } from "@/app/utils/products";
+import { createProduct, createProductImage } from "@/app/utils/products";
 import Image from "next/image";
 import Loading from "@/app/loading";
 import Logo from "@/public/logo.svg";
 import { useRouter } from "next/navigation";
 
-const AddProduct = ({ params: { id } }: { params: any }) => {
+const AddProduct = () => {
   const { user, accessToken } = store();
   const [name, setName] = React.useState("");
   const [description, setDescription] = React.useState("");
